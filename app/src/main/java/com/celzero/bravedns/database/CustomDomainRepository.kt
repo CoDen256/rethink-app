@@ -18,40 +18,52 @@ package com.celzero.bravedns.database
 import android.database.Cursor
 import androidx.lifecycle.LiveData
 import androidx.room.Transaction
+import com.celzero.bravedns.dictator.Dictator
 import com.celzero.bravedns.util.Constants
 
-class CustomDomainRepository(private val customDomainDAO: CustomDomainDAO) {
+class CustomDomainRepository(
+    private val customDomainDAO: CustomDomainDAO,
+    private val dictator: Dictator
+) {
     suspend fun update(customDomain: CustomDomain) {
+        return
         customDomainDAO.update(customDomain)
     }
 
     suspend fun insert(customDomain: CustomDomain) {
+        return
         customDomainDAO.insert(customDomain)
     }
 
     suspend fun delete(customDomain: CustomDomain) {
+        return
         customDomainDAO.delete(customDomain)
     }
 
     @Transaction
     suspend fun update(prevDomain: CustomDomain, newDomain: CustomDomain) {
+        return
         customDomainDAO.delete(prevDomain)
         customDomainDAO.insert(newDomain)
     }
 
     fun getAllCustomDomains(): List<CustomDomain> {
+        return dictator.getCustomDomainRules()
         return customDomainDAO.getAllDomains()
     }
 
     fun getDomainsByUID(uid: Int): List<CustomDomain> {
+        return dictator.getCustomDomainRules()
         return customDomainDAO.getDomainsByUID(uid)
     }
 
     suspend fun deleteRulesByUid(uid: Int) {
+        return
         customDomainDAO.deleteRulesByUid(uid)
     }
 
     fun deleteAllRules() {
+        return
         customDomainDAO.deleteAllRules()
     }
 

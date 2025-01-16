@@ -25,6 +25,8 @@ import androidx.room.TypeConverters
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SimpleSQLiteQuery
 import androidx.sqlite.db.SupportSQLiteDatabase
+import com.celzero.bravedns.dictator.CachedRuleDictator
+import com.celzero.bravedns.dictator.Dictator
 import com.celzero.bravedns.service.WireguardManager.SEC_WARP_FILE_NAME
 import com.celzero.bravedns.service.WireguardManager.SEC_WARP_NAME
 import com.celzero.bravedns.service.WireguardManager.WARP_FILE_NAME
@@ -1045,11 +1047,13 @@ abstract class AppDatabase : RoomDatabase() {
 
     fun proxyEndpointRepository() = ProxyEndpointRepository(proxyEndpointDAO())
 
-    fun customDomainRepository() = CustomDomainRepository(customDomainEndpointDAO())
+    fun customDomainRepository() = CustomDomainRepository(customDomainEndpointDAO(), dictator())
 
     fun customIpRepository() = CustomIpRepository(customIpEndpointDao())
 
-    fun rethinkEndpointRepository() = RethinkDnsEndpointRepository(rethinkEndpointDao())
+    fun rethinkEndpointRepository() = RethinkDnsEndpointRepository(rethinkEndpointDao(), dictator())
+
+    fun dictator(): Dictator = CachedRuleDictator()
 
     fun rethinkRemoteFileTagRepository() = RethinkRemoteFileTagRepository(rethinkRemoteFileTagDao())
 

@@ -147,9 +147,8 @@ class PersistentState(context: Context) : SimpleKrate(context), KoinComponent {
     var checkForAppUpdate by booleanPref("check_for_app_update").withDefault<Boolean>(true)
 
     // last connected dns label name and url
-    var connectedDnsName by
-        stringPref("connected_dns_name")
-            .withDefault<String>(context.getString(R.string.default_dns_name))
+    var connectedDnsName by stringPref("connected_dns_name")
+        .withDefault<String>(context.getString(R.string.default_dns_name))
 
     // the current light/dark theme; 0's the default which is "Set by System"
     var theme by intPref("app_theme").withDefault<Int>(0)

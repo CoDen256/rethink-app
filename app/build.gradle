@@ -60,6 +60,11 @@ android {
     }
 
     signingConfigs {
+        debug {
+            storeFile file('C:\\Users\\denbl\\.android\\avd\\debug.keystore')
+            storePassword 'android'
+            keyAlias 'androiddebugkey'
+        }
         config {
             keyAlias keystoreProperties['keyAlias']
             keyPassword keystoreProperties['keyPassword']
@@ -107,6 +112,10 @@ android {
         coreLibraryDesugaringEnabled true
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = "17"
     }
 
     packagingOptions {

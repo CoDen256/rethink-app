@@ -58,6 +58,7 @@ object DatabaseModule {
         single { get<AppDatabase>().customDomainRepository() }
         single { get<AppDatabase>().customIpRepository() }
         single { get<AppDatabase>().rethinkEndpointRepository() }
+        single { get<AppDatabase>().dictator() }
         single { get<AppDatabase>().rethinkRemoteFileTagRepository() }
         single { get<AppDatabase>().rethinkLocalFileTagRepository() }
         single { get<AppDatabase>().remoteBlocklistPacksMapRepository() }

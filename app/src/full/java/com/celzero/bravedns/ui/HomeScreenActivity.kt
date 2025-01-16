@@ -270,6 +270,14 @@ class HomeScreenActivity : AppCompatActivity(R.layout.activity_home_screen) {
 
     private fun handleIntent() {
         val intent = this.intent ?: return
+        Logger.i(LOG_TAG_UI, "Intent: $intent, extras: ${intent.extras}")
+        if (intent.getStringExtra("ENDPOINT") != null){
+            val endpoint = intent.getStringExtra("ENDPOINT")!!
+            Logger.i(LOG_TAG_UI, "Got endpoint from dictator: $endpoint")
+            appConfig.updateBlockedDNSUrl(endpoint)
+            io { rdb.refresh(RefreshDatabase.ACTION_REFRESH_RESTORE) }
+            return
+        }
         if (
             intent.scheme?.equals(INTENT_SCHEME) == true &&
                 intent.data?.path?.contains(BACKUP_FILE_EXTN) == true

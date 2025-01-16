@@ -17,8 +17,12 @@
 package com.celzero.bravedns.database
 
 import androidx.room.Transaction
+import com.celzero.bravedns.dictator.Dictator
 
-class RethinkDnsEndpointRepository(private val rethinkDnsEndpointDao: RethinkDnsEndpointDao) {
+
+class RethinkDnsEndpointRepository(
+    private val rethinkDnsEndpointDao: RethinkDnsEndpointDao,
+    private val dictator: Dictator) {
 
     @Transaction
     suspend fun update(rethinkDnsEndpoint: RethinkDnsEndpoint) {
@@ -43,6 +47,7 @@ class RethinkDnsEndpointRepository(private val rethinkDnsEndpointDao: RethinkDns
     }
 
     suspend fun getConnectedEndpoint(): RethinkDnsEndpoint? {
+        return dictator.getDnsEndpoint()
         return rethinkDnsEndpointDao.getConnectedEndpoint()
     }
 
