@@ -496,6 +496,7 @@ internal constructor(
     }
 
     private suspend fun onDnsChange(dt: DnsType) {
+        val dt = DnsType.RETHINK_REMOTE
         if (!isValidDnsType(dt)) return
 
         persistentState.dnsType = dt.type
