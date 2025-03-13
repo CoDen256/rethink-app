@@ -11,7 +11,7 @@ class CachedRuleDictator : Dictator {
     // "https://max.rethinkdns.com/1-kdyacbarqaeaiaeiaaeaaaq" mine
     // " https://max.rethinkdns.com/1-abqacaaiaa"   a
     // 1-cbqbcaaiacaaa
-    val defaultUrl = "https://max.rethinkdns.com/1-kdyacbarqaeaiaeiaaeaaaq" // none: https://max.rethinkdns.com/
+    val defaultUrl = "https://max.rethinkdns.com/1-bdaacaaaeaaia" // none: https://max.rethinkdns.com/
     var currentUrl = defaultUrl
 
     val baseEndpoint = RethinkDnsEndpoint(
@@ -28,16 +28,27 @@ class CachedRuleDictator : Dictator {
     }
 
     val domains = listOf(
-        domain("*.production.jet-external.com", DomainRulesManager.Status.BLOCK, DomainRulesManager.DomainType.WILDCARD),
-        domain("res.cloudinary.com", DomainRulesManager.Status.BLOCK, DomainRulesManager.DomainType.DOMAIN),
-        domain("*.cloudinary.com", DomainRulesManager.Status.BLOCK, DomainRulesManager.DomainType.WILDCARD),
-        domain("res.cloudinary.com", DomainRulesManager.Status.BLOCK, DomainRulesManager.DomainType.DOMAIN),
-        domain("*.wolt.com", DomainRulesManager.Status.BLOCK, DomainRulesManager.DomainType.WILDCARD),
-        domain("wolt.com", DomainRulesManager.Status.BLOCK, DomainRulesManager.DomainType.DOMAIN),
-        domain("*.uber.com", DomainRulesManager.Status.BLOCK, DomainRulesManager.DomainType.WILDCARD),
-        domain("uber.com", DomainRulesManager.Status.BLOCK, DomainRulesManager.DomainType.DOMAIN),
+//        domain("*.production.jet-external.com", DomainRulesManager.Status.BLOCK, DomainRulesManager.DomainType.WILDCARD),
+//        domain("res.cloudinary.com", DomainRulesManager.Status.BLOCK, DomainRulesManager.DomainType.DOMAIN),
+//        domain("*.cloudinary.com", DomainRulesManager.Status.BLOCK, DomainRulesManager.DomainType.WILDCARD),
+//        domain("res.cloudinary.com", DomainRulesManager.Status.BLOCK, DomainRulesManager.DomainType.DOMAIN),
+//        domain("*.wolt.com", DomainRulesManager.Status.BLOCK, DomainRulesManager.DomainType.WILDCARD),
+//        domain("wolt.com", DomainRulesManager.Status.BLOCK, DomainRulesManager.DomainType.DOMAIN),
+//        domain("*.uber.com", DomainRulesManager.Status.BLOCK, DomainRulesManager.DomainType.WILDCARD),
+//        domain("uber.com", DomainRulesManager.Status.BLOCK, DomainRulesManager.DomainType.DOMAIN),
+        domain("*.tiktokcdn.com", DomainRulesManager.Status.BLOCK, DomainRulesManager.DomainType.WILDCARD),
+        domain("*.youtube.com", DomainRulesManager.Status.BLOCK, DomainRulesManager.DomainType.WILDCARD),
+        domain("*.googlevideo.com", DomainRulesManager.Status.BLOCK, DomainRulesManager.DomainType.WILDCARD),
+        domain("*.tiktokv.com", DomainRulesManager.Status.BLOCK, DomainRulesManager.DomainType.WILDCARD),
+        domain("*.fbcdn.net", DomainRulesManager.Status.BLOCK, DomainRulesManager.DomainType.WILDCARD),
+        domain("*.cdninstagram.com", DomainRulesManager.Status.BLOCK, DomainRulesManager.DomainType.WILDCARD),
+        domain("*.instagram.com", DomainRulesManager.Status.BLOCK, DomainRulesManager.DomainType.WILDCARD),
+        domain("*.twimg.com", DomainRulesManager.Status.BLOCK, DomainRulesManager.DomainType.WILDCARD),
+        domain("*.x.com", DomainRulesManager.Status.BLOCK, DomainRulesManager.DomainType.WILDCARD),
+        domain("*.twitter.com", DomainRulesManager.Status.BLOCK, DomainRulesManager.DomainType.WILDCARD),
+        domain("*.redd.it", DomainRulesManager.Status.BLOCK, DomainRulesManager.DomainType.WILDCARD),
+        domain("*.reddit.com", DomainRulesManager.Status.BLOCK, DomainRulesManager.DomainType.WILDCARD),
         domain("*.web.telegram.org", DomainRulesManager.Status.BLOCK, DomainRulesManager.DomainType.WILDCARD),
-        domain("web.telegram.org", DomainRulesManager.Status.BLOCK, DomainRulesManager.DomainType.DOMAIN)
     )
 
     override fun getCustomDomainRules(): List<CustomDomain> {
