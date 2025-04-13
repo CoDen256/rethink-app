@@ -39,7 +39,6 @@ import com.celzero.bravedns.database.ProxyEndpoint
 import com.celzero.bravedns.database.ProxyEndpointRepository
 import com.celzero.bravedns.database.RethinkDnsEndpoint
 import com.celzero.bravedns.database.RethinkDnsEndpointRepository
-import com.celzero.bravedns.dictator.Dictator
 import com.celzero.bravedns.service.PersistentState
 import com.celzero.bravedns.service.TcpProxyHelper
 import com.celzero.bravedns.util.Constants
@@ -56,7 +55,6 @@ class AppConfig
 internal constructor(
     private val context: Context,
     private val rethinkDnsEndpointRepository: RethinkDnsEndpointRepository,
-    private val dictator: Dictator,
     private val dnsProxyEndpointRepository: DnsProxyEndpointRepository,
     private val doHEndpointRepository: DoHEndpointRepository,
     private val dnsCryptEndpointRepository: DnsCryptEndpointRepository,
@@ -485,10 +483,6 @@ internal constructor(
     fun isWireGuardEnabled(): Boolean {
         val proxyType = ProxyType.of(persistentState.proxyType)
         return proxyType.isProxyTypeWireguard()
-    }
-
-    fun updateBlockedDNSUrl(url: String){
-        dictator.update(url)
     }
 
     private suspend fun getDNSProxyServerDetails(): DnsProxyEndpoint? {

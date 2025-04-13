@@ -273,8 +273,7 @@ class HomeScreenActivity : AppCompatActivity(R.layout.activity_home_screen) {
         Logger.i(LOG_TAG_UI, "Intent: $intent, extras: ${intent.extras}")
         if (intent.getStringExtra("ENDPOINT") != null){
             val endpoint = intent.getStringExtra("ENDPOINT")!!
-            Logger.i(LOG_TAG_UI, "Got endpoint from dictator: $endpoint")
-            appConfig.updateBlockedDNSUrl(endpoint)
+            Logger.i(LOG_TAG_UI, "Got endpoint from guard: $endpoint")
             io { rdb.refresh(RefreshDatabase.ACTION_REFRESH_RESTORE) }
             return
         }

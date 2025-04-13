@@ -164,9 +164,8 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
             }
         }
 
-        b.homeFragmentPauseIcon.setOnClickListener {
-            handlePause()
-        }
+        b.homeFragmentPauseIcon.setOnClickListener { handlePause() }
+
 
         b.fhsDnsOnOffBtn.setOnClickListener {
             handleMainScreenBtnClickEvent()

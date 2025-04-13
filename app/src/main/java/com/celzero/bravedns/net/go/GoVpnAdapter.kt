@@ -190,7 +190,7 @@ class GoVpnAdapter : KoinComponent {
             AppConfig.DnsType.RETHINK_REMOTE -> {
                 // only rethink has different stamp for block free transport
                 // create a new transport for block free
-                val rdnsRemoteUrl = appConfig.getRemoteRethinkEndpoint()?.url // here will be read
+                val rdnsRemoteUrl = appConfig.getRemoteRethinkEndpoint()?.url // here the rethink dns endpoint will be read
                 val blockfreeUrl = appConfig.getBlockFreeRethinkEndpoint()
 
                 if (blockfreeUrl.isNotEmpty()) {

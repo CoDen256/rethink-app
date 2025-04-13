@@ -11,6 +11,10 @@
         android:maxSdkVersion="32"
         tools:ignore="ScopedStorage" />
 
+    <queries>
+        <package android:name="io.github.coden.dictator" />
+    </queries>
+
     <application
         android:name=".RethinkDnsApplication"
         android:requestLegacyExternalStorage="true"

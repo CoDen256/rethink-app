@@ -3,11 +3,11 @@ package com.celzero.bravedns
 import Logger
 import Logger.LOG_TAG_SCHEDULER
 import android.app.Application
-import android.content.ComponentCallbacks2
 import android.content.pm.ApplicationInfo
 import android.os.StrictMode
 import com.celzero.bravedns.scheduler.ScheduleManager
 import com.celzero.bravedns.scheduler.WorkScheduler
+import io.github.coden256.wpl.RethinkGuardController
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
@@ -53,6 +53,7 @@ class RethinkDnsApplication : Application() {
         CoroutineScope(SupervisorJob()).launch {
             scheduleJobs()
         }
+        RethinkGuardController.init(this)
     }
 
     private suspend fun scheduleJobs() {

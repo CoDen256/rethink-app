@@ -34,7 +34,6 @@ object DataModule {
                 get(),
                 get(),
                 get(),
-                get()
             )
         }
     }

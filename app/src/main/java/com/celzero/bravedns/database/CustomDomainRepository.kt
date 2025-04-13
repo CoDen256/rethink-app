@@ -18,13 +18,10 @@ package com.celzero.bravedns.database
 import android.database.Cursor
 import androidx.lifecycle.LiveData
 import androidx.room.Transaction
-import com.celzero.bravedns.dictator.Dictator
 import com.celzero.bravedns.util.Constants
+import io.github.coden256.wpl.RethinkGuardController
 
-class CustomDomainRepository(
-    private val customDomainDAO: CustomDomainDAO,
-    private val dictator: Dictator
-) {
+class CustomDomainRepository(private val customDomainDAO: CustomDomainDAO) {
     suspend fun update(customDomain: CustomDomain) {
         return
         customDomainDAO.update(customDomain)
@@ -48,12 +45,12 @@ class CustomDomainRepository(
     }
 
     fun getAllCustomDomains(): List<CustomDomain> {
-        return dictator.getCustomDomainRules()
+        return RethinkGuardController.customDomainRules()
         return customDomainDAO.getAllDomains()
     }
 
     fun getDomainsByUID(uid: Int): List<CustomDomain> {
-        return dictator.getCustomDomainRules()
+        return RethinkGuardController.customDomainRules()
         return customDomainDAO.getDomainsByUID(uid)
     }
 
@@ -73,6 +70,7 @@ class CustomDomainRepository(
     }
 
     fun updateUid(uid: Int, newUid: Int) {
+        return
         customDomainDAO.updateUid(uid, newUid)
     }
 

@@ -25,14 +25,13 @@ import androidx.room.TypeConverters
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SimpleSQLiteQuery
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.celzero.bravedns.dictator.CachedRuleDictator
-import com.celzero.bravedns.dictator.Dictator
 import com.celzero.bravedns.service.WireguardManager.SEC_WARP_FILE_NAME
 import com.celzero.bravedns.service.WireguardManager.SEC_WARP_NAME
 import com.celzero.bravedns.service.WireguardManager.WARP_FILE_NAME
 import com.celzero.bravedns.service.WireguardManager.WARP_NAME
 import com.celzero.bravedns.util.Constants
 import com.celzero.bravedns.util.Constants.Companion.WIREGUARD_FOLDER_NAME
+import io.github.coden256.wpl.RethinkGuardController
 import java.io.File
 
 @Database(
@@ -1047,13 +1046,13 @@ abstract class AppDatabase : RoomDatabase() {
 
     fun proxyEndpointRepository() = ProxyEndpointRepository(proxyEndpointDAO())
 
-    fun customDomainRepository() = CustomDomainRepository(customDomainEndpointDAO(), dictator())
+    fun customDomainRepository() = CustomDomainRepository(customDomainEndpointDAO())
 
     fun customIpRepository() = CustomIpRepository(customIpEndpointDao())
 
-    fun rethinkEndpointRepository() = RethinkDnsEndpointRepository(rethinkEndpointDao(), dictator())
+    fun rethinkEndpointRepository() = RethinkDnsEndpointRepository(rethinkEndpointDao())
 
-    fun dictator(): Dictator = CachedRuleDictator()
+    fun guard(): RethinkGuardController = RethinkGuardController
 
     fun rethinkRemoteFileTagRepository() = RethinkRemoteFileTagRepository(rethinkRemoteFileTagDao())
 
