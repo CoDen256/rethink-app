@@ -20,22 +20,34 @@ object RethinkGuardController {
         connector.connect(context)
     }
 
+    fun isConnected(): Boolean {
+        return guard != null
+    }
+
     fun customDomainRules(): List<CustomDomain> {
         return (guard
             ?.domainRulings()
-            ?.also { Log.i("Guard", "[domain] got from guard: $it") }
+            ?.also { Log.i("Guard", "[domain] got from guard: ${it.map { it.toPrettyString() }}") }
             ?.map { it.asCustomDomain() }
             ?: emptyList())
-            .also { Log.i("Guard", "[domain] set domains: ${it.map { it.domain + "->" + it.status }}") }
+            .also { Log.i("Guard", "[domain] set domains: ${it.map { it.domain + "->" + DomainRulesManager.Status.getStatus(it.status) }}") }
     }
 
     fun getDnsEndpoint(): RethinkDnsEndpoint? {
         return guard
             ?.dnsRulings()
-            ?.also { Log.i("Guard", "[dns] got from guard: $it") }
+            ?.also { Log.i("Guard", "[dns] got from guard: ${it.map { it.toPrettyString() }}") }
             ?.firstOrNull { it.action == "FORCE" }
             ?.asRethinkDnsEndpoint()
-            .also { Log.i("Guard", "[dns] set url: ${it?.url}") }
+            .also {  }
+    }
+
+    fun onDnsUpdate(url: String?){
+        Log.i("Guard", "[dns] set url: $url")
+    }
+
+    fun onDomainUpdate(total: Long?){
+        Log.i("Guard", "[domain] updated: $total domain rules")
     }
 
     private fun DNSRuling.asRethinkDnsEndpoint(): RethinkDnsEndpoint {
@@ -45,6 +57,14 @@ object RethinkGuardController {
             modifiedDataTime = 1731774271565L, name = "RDNS Plus", uid = -2000,
             url = "https://max.rethinkdns.com/$dns"
         )
+    }
+
+    private fun DNSRuling.toPrettyString(): String{
+        return "dns{$dns: $action}"
+    }
+
+    private fun DomainRuling.toPrettyString(): String{
+        return "dns{$domain: $action}"
     }
 
     private fun DomainRuling.asCustomDomain(): CustomDomain {

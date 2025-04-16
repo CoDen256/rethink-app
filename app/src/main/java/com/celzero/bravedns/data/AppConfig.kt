@@ -535,7 +535,12 @@ internal constructor(
     private fun postConnectedDnsName(name: String, url: String = "") {
         connectedDns.postValue(name)
         persistentState.connectedDnsName = "$name,$url"
-    }
+    } // rdns plus here will be posted "RDNS Plus, https://max.rethinkdns.com/1-bdaaca...
+    // the triggered BraveVPNService onSharedPreferenceChanged(sharedpref, key = connected_dns_name), which is changed here
+    // but before this is posted first a getRemoteRethinkEndpoint() is called to determine which dns name(type) it is
+    // then called onSharedPreferenceChanged
+    // then again getRemoteRethinkEndpoint()
+    // just call AppConfig.onDnsChange in the Updater, if its the same, it will get updated and propagated to BraveServiceVPN, if not, it stays the same
 
     private fun isValidDnsType(dt: DnsType): Boolean {
         return (dt == DnsType.DOH ||

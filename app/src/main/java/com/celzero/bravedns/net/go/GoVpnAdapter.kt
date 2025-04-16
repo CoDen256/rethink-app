@@ -55,6 +55,7 @@ import com.celzero.bravedns.util.Utilities.showToastUiCentered
 import com.celzero.bravedns.wireguard.Config
 import intra.Intra
 import intra.Tunnel
+import io.github.coden256.wpl.RethinkGuardController
 import java.net.URI
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Deferred
@@ -192,6 +193,7 @@ class GoVpnAdapter : KoinComponent {
                 // create a new transport for block free
                 val rdnsRemoteUrl = appConfig.getRemoteRethinkEndpoint()?.url // here the rethink dns endpoint will be read
                 val blockfreeUrl = appConfig.getBlockFreeRethinkEndpoint()
+                RethinkGuardController.onDnsUpdate(rdnsRemoteUrl)
 
                 if (blockfreeUrl.isNotEmpty()) {
                     Logger.i(LOG_TAG_VPN, "adding blockfree url: $blockfreeUrl")

@@ -55,6 +55,7 @@ import com.celzero.bravedns.util.Utilities.getActivityPendingIntent
 import com.celzero.bravedns.util.Utilities.isAtleastO
 import com.celzero.bravedns.util.Utilities.isAtleastT
 import com.celzero.bravedns.util.Utilities.isNonApp
+import io.github.coden256.wpl.RethinkGuardController
 import java.util.concurrent.TimeUnit
 import kotlin.random.Random
 import kotlinx.coroutines.CoroutineName
@@ -145,6 +146,8 @@ internal constructor(
             val wgm = WireguardManager.load()
             val tcpm = TcpProxyHelper.load()
 
+
+            RethinkGuardController.onDomainUpdate(dm)
             Logger.i(
                 LOG_TAG_APP_DB,
                 "reload: fm: ${fm}; ip: ${ipm}; dom: ${dm}; px: ${pxm}; wg: ${wgm}; t: ${tcpm}"
