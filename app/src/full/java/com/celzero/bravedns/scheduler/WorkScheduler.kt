@@ -29,7 +29,6 @@ import androidx.work.WorkManager
 import androidx.work.WorkRequest
 import com.celzero.bravedns.util.Utilities
 import com.google.common.util.concurrent.ListenableFuture
-import io.github.coden256.wpl.GuardRulingUpdater
 import java.util.concurrent.ExecutionException
 import java.util.concurrent.TimeUnit
 
@@ -198,25 +197,6 @@ class WorkScheduler(val context: Context) {
         WorkManager.getInstance(context.applicationContext)
             .enqueueUniquePeriodicWork(
                 DATA_USAGE_JOB_TAG,
-                ExistingPeriodicWorkPolicy.CANCEL_AND_REENQUEUE,
-                workRequest
-            )
-    }
-
-    fun scheduleGuardRulingUpdate() {
-        Logger.i(LOG_TAG_SCHEDULER, "Guard ruling updater scheduled")
-        val workRequest =
-            PeriodicWorkRequest.Builder(
-                GuardRulingUpdater::class.java,
-                GUARD_RULING_UPDATER_MINS,
-                TimeUnit.MINUTES
-            )
-                .addTag(GUARD_RULING_UPDATER_JOB_TAG)
-                .build()
-
-        WorkManager.getInstance(context.applicationContext)
-            .enqueueUniquePeriodicWork(
-                GUARD_RULING_UPDATER_JOB_TAG,
                 ExistingPeriodicWorkPolicy.CANCEL_AND_REENQUEUE,
                 workRequest
             )

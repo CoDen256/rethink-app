@@ -367,6 +367,7 @@ class CustomDomainAdapter(val context: Context, val rule: CustomRulesActivity.RU
         prevDomain: CustomDomain,
         status: DomainRulesManager.Status
     ) {
+        return
         DomainRulesManager.updateDomainRule(domain, status, type, prevDomain)
         uiCtx {
             Utilities.showToastUiCentered(
@@ -476,6 +477,7 @@ class CustomDomainAdapter(val context: Context, val rule: CustomRulesActivity.RU
 
         private val domainRulesGroupListener =
             MaterialButtonToggleGroup.OnButtonCheckedListener { group, checkedId, isChecked ->
+                return@OnButtonCheckedListener
                 val b: MaterialButton = b.customDomainToggleGroup.findViewById(checkedId)
 
                 val statusId = findSelectedRuleByTag(getTag(b.tag))
@@ -632,6 +634,7 @@ class CustomDomainAdapter(val context: Context, val rule: CustomRulesActivity.RU
 
         private val domainRulesGroupListener =
             MaterialButtonToggleGroup.OnButtonCheckedListener { group, checkedId, isChecked ->
+                return@OnButtonCheckedListener
                 val b: MaterialButton = b.customDomainToggleGroup.findViewById(checkedId)
 
                 val statusId = findSelectedRuleByTag(getTag(b.tag))

@@ -96,6 +96,7 @@ class DomainRulesBtmSheetAdapter(
 
         private fun applyDomainRule(domain: String, domainRuleStatus: DomainRulesManager.Status) {
             Logger.i(LOG_TAG_FIREWALL, "Apply domain rule for $domain, ${domainRuleStatus.name}")
+            return
             io {
                 DomainRulesManager.addDomainRule(
                     domain.trim(),

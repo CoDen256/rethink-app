@@ -710,6 +710,7 @@ class ConnTrackerBottomSheet : BottomSheetDialogFragment(), KoinComponent {
             LOG_TAG_FIREWALL,
             "Apply domain rule for ${info!!.dnsQuery}, ${domainRuleStatus.name}"
         )
+        return
         io {
             DomainRulesManager.addDomainRule(
                 info!!.dnsQuery!!,

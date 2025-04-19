@@ -201,6 +201,7 @@ class DnsBlocklistBottomSheet : BottomSheetDialogFragment() {
             Logger.w(LOG_TAG_DNS, "Transaction detail missing, no need to apply dns rules")
             return
         }
+        return
         io {
             DomainRulesManager.changeStatus(
                 log!!.queryStr,

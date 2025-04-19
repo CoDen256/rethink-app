@@ -277,6 +277,7 @@ class CustomDomainFragment :
         type: DomainRulesManager.DomainType,
         status: DomainRulesManager.Status
     ) {
+        return
         io { DomainRulesManager.addDomainRule(domain, status, type, uid = uid) }
         Utilities.showToastUiCentered(
             requireContext(),
@@ -296,6 +297,7 @@ class CustomDomainFragment :
     }
 
     private fun showDomainRulesDeleteDialog() {
+        return
         val builder = MaterialAlertDialogBuilder(requireContext())
         builder.setTitle(R.string.univ_delete_firewall_dialog_title)
         builder.setMessage(R.string.univ_delete_firewall_dialog_message)

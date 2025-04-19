@@ -53,7 +53,6 @@ class RethinkDnsApplication : Application() {
         CoroutineScope(SupervisorJob()).launch {
             scheduleJobs()
         }
-        RethinkGuardController.init(this)
     }
 
     private suspend fun scheduleJobs() {
@@ -63,7 +62,6 @@ class RethinkDnsApplication : Application() {
         get<ScheduleManager>().scheduleDatabaseRefreshJob()
         get<WorkScheduler>().scheduleDataUsageJob()
         get<WorkScheduler>().schedulePurgeConnectionsLog()
-        get<WorkScheduler>().scheduleGuardRulingUpdate()
     }
 
     private fun turnOnStrictMode() {

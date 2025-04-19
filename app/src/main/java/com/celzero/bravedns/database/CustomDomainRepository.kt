@@ -23,44 +23,36 @@ import io.github.coden256.wpl.RethinkGuardController
 
 class CustomDomainRepository(private val customDomainDAO: CustomDomainDAO) {
     suspend fun update(customDomain: CustomDomain) {
-        return
         customDomainDAO.update(customDomain)
     }
 
     suspend fun insert(customDomain: CustomDomain) {
-        return
         customDomainDAO.insert(customDomain)
     }
 
     suspend fun delete(customDomain: CustomDomain) {
-        return
         customDomainDAO.delete(customDomain)
     }
 
     @Transaction
     suspend fun update(prevDomain: CustomDomain, newDomain: CustomDomain) {
-        return
         customDomainDAO.delete(prevDomain)
         customDomainDAO.insert(newDomain)
     }
 
     fun getAllCustomDomains(): List<CustomDomain> {
-        return RethinkGuardController.customDomainRules()
         return customDomainDAO.getAllDomains()
     }
 
     fun getDomainsByUID(uid: Int): List<CustomDomain> {
-        return RethinkGuardController.customDomainRules()
         return customDomainDAO.getDomainsByUID(uid)
     }
 
     suspend fun deleteRulesByUid(uid: Int) {
-        return
         customDomainDAO.deleteRulesByUid(uid)
     }
 
     fun deleteAllRules() {
-        return
         customDomainDAO.deleteAllRules()
     }
 
@@ -70,7 +62,6 @@ class CustomDomainRepository(private val customDomainDAO: CustomDomainDAO) {
     }
 
     fun updateUid(uid: Int, newUid: Int) {
-        return
         customDomainDAO.updateUid(uid, newUid)
     }
 

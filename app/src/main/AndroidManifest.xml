@@ -76,5 +76,14 @@
                 android:value="true" />
         </service>
 
+        <service
+            android:name="io.github.coden256.wpl.guard.GuardClientService"
+            android:enabled="true"
+            android:exported="true"
+            tools:ignore="ExportedService">
+            <intent-filter>
+                <action android:name="io.github.coden256.wpl.guard.RULING_SETTING"/>
+            </intent-filter>
+        </service>
     </application>
 </manifest>

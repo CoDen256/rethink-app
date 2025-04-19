@@ -218,6 +218,7 @@ class AppDomainRulesBottomSheet : BottomSheetDialogFragment() {
     }
 
     private fun applyDomainRule(status: DomainRulesManager.Status) {
+        return
         Logger.i(LOG_TAG_FIREWALL, "domain rule for uid: $uid:$domain (${status.name})")
         domainRule = status
 
