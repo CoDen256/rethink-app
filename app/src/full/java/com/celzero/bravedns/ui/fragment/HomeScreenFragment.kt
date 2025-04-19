@@ -166,7 +166,6 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
 
         b.homeFragmentPauseIcon.setOnClickListener { handlePause() }
 
-
         b.fhsDnsOnOffBtn.setOnClickListener {
             handleMainScreenBtnClickEvent()
             delay(TimeUnit.MILLISECONDS.toMillis(500), lifecycleScope) {
@@ -217,6 +216,7 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
             return
         }
 
+        return
         VpnController.pauseApp()
         persistentState.notificationActionType = NotificationActionType.PAUSE_STOP.action
         openPauseActivity()

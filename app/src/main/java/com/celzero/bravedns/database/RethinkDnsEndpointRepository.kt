@@ -17,8 +17,6 @@
 package com.celzero.bravedns.database
 
 import androidx.room.Transaction
-import io.github.coden256.wpl.RethinkGuardController
-
 
 class RethinkDnsEndpointRepository(private val rethinkDnsEndpointDao: RethinkDnsEndpointDao) {
 
@@ -45,7 +43,6 @@ class RethinkDnsEndpointRepository(private val rethinkDnsEndpointDao: RethinkDns
     }
 
     suspend fun getConnectedEndpoint(): RethinkDnsEndpoint? {
-        return RethinkGuardController.getDnsEndpoint()
         return rethinkDnsEndpointDao.getConnectedEndpoint()
     }
 

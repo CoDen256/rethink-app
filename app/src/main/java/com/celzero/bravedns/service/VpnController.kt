@@ -183,7 +183,6 @@ object VpnController : KoinComponent {
     }
 
     fun pauseApp() {
-        return // don't let it pause
         braveVpnService?.let {
             onConnectionStateChanged(BraveVPNService.State.PAUSED)
             it.pauseApp()

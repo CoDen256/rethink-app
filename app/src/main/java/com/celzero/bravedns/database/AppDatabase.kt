@@ -31,7 +31,6 @@ import com.celzero.bravedns.service.WireguardManager.WARP_FILE_NAME
 import com.celzero.bravedns.service.WireguardManager.WARP_NAME
 import com.celzero.bravedns.util.Constants
 import com.celzero.bravedns.util.Constants.Companion.WIREGUARD_FOLDER_NAME
-import io.github.coden256.wpl.RethinkGuardController
 import java.io.File
 
 @Database(
@@ -1051,8 +1050,6 @@ abstract class AppDatabase : RoomDatabase() {
     fun customIpRepository() = CustomIpRepository(customIpEndpointDao())
 
     fun rethinkEndpointRepository() = RethinkDnsEndpointRepository(rethinkEndpointDao())
-
-    fun guard(): RethinkGuardController = RethinkGuardController
 
     fun rethinkRemoteFileTagRepository() = RethinkRemoteFileTagRepository(rethinkRemoteFileTagDao())
 

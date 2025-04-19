@@ -108,6 +108,7 @@ class NotificationActionReceiver : BroadcastReceiver(), KoinComponent {
             return
         }
 
+        return
         VpnController.pauseApp()
     }
 

@@ -19,7 +19,6 @@ import android.database.Cursor
 import androidx.lifecycle.LiveData
 import androidx.room.Transaction
 import com.celzero.bravedns.util.Constants
-import io.github.coden256.wpl.RethinkGuardController
 
 class CustomDomainRepository(private val customDomainDAO: CustomDomainDAO) {
     suspend fun update(customDomain: CustomDomain) {
