@@ -146,7 +146,7 @@ internal constructor(
             val tcpm = TcpProxyHelper.load()
 
             Logger.i(
-                LOG_TAG_APP_DB,
+                "GuardClientRefreshDatabase",
                 "reload: fm: ${fm}; ip: ${ipm}; dom: ${dm}; px: ${pxm}; wg: ${wgm}; t: ${tcpm}"
             )
 

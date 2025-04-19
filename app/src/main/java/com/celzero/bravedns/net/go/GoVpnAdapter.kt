@@ -202,10 +202,10 @@ class GoVpnAdapter : KoinComponent {
                     return
                 }
                 if (!rdnsRemoteUrl.isNullOrEmpty()) {
-                    Logger.i(LOG_TAG_VPN, "adding rdns remote url: $rdnsRemoteUrl")
+                    Logger.i("GuardClientVpnAdapter", "adding rdns remote url: $rdnsRemoteUrl")
                     addRdnsTransport(Backend.Preferred, rdnsRemoteUrl)
                 } else {
-                    Logger.i(LOG_TAG_VPN, "no rdns remote url found")
+                    Logger.i("GuardClientVpnAdapter", "no rdns remote url found")
                 }
             }
         }

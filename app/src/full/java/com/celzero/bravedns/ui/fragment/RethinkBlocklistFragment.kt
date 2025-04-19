@@ -325,7 +325,7 @@ class RethinkBlocklistFragment :
 
         b.lbBlocklistApplyBtn.setOnClickListener {
             // update rethink stamp
-            setStamp(modifiedStamp)
+//            setStamp(modifiedStamp)
             requireActivity().finish()
         }
 
@@ -419,12 +419,13 @@ class RethinkBlocklistFragment :
     }
 
     private fun showApplyChangesDialog() {
+        return
         val builder = MaterialAlertDialogBuilder(requireContext())
         builder.setTitle(getString(R.string.rt_dialog_title))
         builder.setMessage(getString(R.string.rt_dialog_message))
         builder.setCancelable(true)
         builder.setPositiveButton(getString(R.string.lbl_apply)) { _, _ ->
-            setStamp(modifiedStamp)
+//            setStamp(modifiedStamp)
             requireActivity().finish()
         }
         builder.setNeutralButton(getString(R.string.rt_dialog_neutral)) { _, _ ->
