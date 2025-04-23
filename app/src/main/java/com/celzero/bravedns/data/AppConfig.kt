@@ -83,8 +83,9 @@ internal constructor(
     init {
         // now connectedDnsName has the dns name and url, extract the dns name and update
         // csv is <dns-name,url>, url maybe empty
-        val dnsName = persistentState.connectedDnsName.split(",").firstOrNull() ?: ""
-        connectedDns.postValue(dnsName)
+        val dnsName = persistentState.connectedDnsName.split(",")
+        connectedDns.postValue(dnsName.firstOrNull() ?: "")
+        persistentState.dnsUrl.postValue(dnsName.lastOrNull() ?: "")
     }
 
     data class TunnelOptions(
@@ -534,6 +535,7 @@ internal constructor(
 
     private fun postConnectedDnsName(name: String, url: String = "") {
         connectedDns.postValue(name)
+        persistentState.dnsUrl.postValue(url)
         persistentState.connectedDnsName = "$name,$url"
     } // rdns plus here will be posted "RDNS Plus, https://max.rethinkdns.com/1-bdaaca...
     // the triggered BraveVPNService onSharedPreferenceChanged(sharedpref, key = connected_dns_name), which is changed here

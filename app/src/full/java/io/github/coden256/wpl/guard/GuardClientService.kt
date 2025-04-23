@@ -1,6 +1,7 @@
 package io.github.coden256.wpl.guard
 
 import android.app.Service
+import android.content.Context
 import android.content.Intent
 import android.os.IBinder
 import android.util.Log
@@ -13,6 +14,17 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
+
+object GuardReviver{
+    fun wakeup(context: Context){
+        Log.i("GuardReviver", "Waking up the Guard")
+        val intent = Intent().apply {
+            action = "io.github.coden256.wpl.guard.WAKEUP"
+            setPackage("io.github.coden256.wpl.guard")
+        }
+        context.startService(intent)
+    }
+}
 
 class GuardClientService: Service() {
 

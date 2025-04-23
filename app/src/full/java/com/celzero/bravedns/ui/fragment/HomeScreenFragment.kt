@@ -527,6 +527,10 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
         appConfig.getConnectedDnsObservable().observe(viewLifecycleOwner) {
             updateUiWithDnsStates(it)
         }
+
+        persistentState.dnsUrl.observe(viewLifecycleOwner){
+            b.fhsCardDnsConnectedDns.text = it
+        }
     }
 
     private fun updateUiWithDnsStates(dnsName: String) {
@@ -622,6 +626,7 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
     private fun unobserveDnsStates() {
         persistentState.median.removeObservers(viewLifecycleOwner)
         appConfig.getConnectedDnsObservable().removeObservers(viewLifecycleOwner)
+        persistentState.dnsUrl.removeObservers(viewLifecycleOwner)
     }
 
     private fun observeUniversalStates() {

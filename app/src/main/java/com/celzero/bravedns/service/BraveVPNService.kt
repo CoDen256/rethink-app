@@ -107,6 +107,7 @@ import inet.ipaddr.HostName
 import inet.ipaddr.IPAddressString
 import intra.Bridge
 import intra.SocketSummary
+import io.github.coden256.wpl.guard.GuardReviver
 import java.io.IOException
 import java.net.InetAddress
 import java.net.SocketException
@@ -1416,6 +1417,7 @@ class BraveVPNService :
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        GuardReviver.wakeup(this)
         rethinkUid = getRethinkUid()
         val pid = Process.myPid()
         Logger.i(
