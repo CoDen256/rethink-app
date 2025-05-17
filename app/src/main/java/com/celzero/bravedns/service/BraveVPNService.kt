@@ -1417,7 +1417,6 @@ class BraveVPNService :
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        GuardReviver.wakeup(this)
         rethinkUid = getRethinkUid()
         val pid = Process.myPid()
         Logger.i(

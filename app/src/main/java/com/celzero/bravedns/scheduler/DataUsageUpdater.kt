@@ -24,16 +24,18 @@ import com.celzero.bravedns.database.AppInfoRepository
 import com.celzero.bravedns.database.ConnectionTrackerRepository
 import com.celzero.bravedns.service.PersistentState
 import com.celzero.bravedns.util.Constants
+import io.github.coden256.wpl.guard.GuardReviver
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-class DataUsageUpdater(context: Context, workerParams: WorkerParameters) :
+class DataUsageUpdater(private val context: Context, workerParams: WorkerParameters) :
     CoroutineWorker(context, workerParams), KoinComponent {
     private val connTrackRepository by inject<ConnectionTrackerRepository>()
     private val appInfoRepository by inject<AppInfoRepository>()
     private val persistentState by inject<PersistentState>()
 
     override suspend fun doWork(): Result {
+        GuardReviver.wakeup(context)
         updateDataUsage()
         return Result.success()
     }
